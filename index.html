@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<!-- Font == Ropa Sans -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Font == Lobster -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Font == Roboto -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300;1,400&display=swap"
+			rel="stylesheet"
+		/>
+
+		<style>
+			/* font-family: 'Ropa Sans', sans-serif; */
+			/* font-family: 'Lobster', cursive; */
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: rgb(255, 190, 201);
+				background: linear-gradient(
+					145deg,
+					rgba(255, 190, 201, 1) 0%,
+					rgba(254, 255, 252, 1) 100%
+				);
+				height: 100vh;
+			}
+
+			.bg {
+				background-color: white;
+				width: 60%;
+				border-radius: 19px;
+				margin: 0 auto;
+			}
+			.content {
+				background: conic-gradient(
+					from 182.75deg at 50% 50%,
+					rgba(187, 233, 140, 0.38) -40.25deg,
+					#eef079 29.33deg,
+					rgba(187, 233, 140, 0.38) 319.75deg,
+					#eef079 389.33deg
+				);
+
+				width: 99%;
+				position: relative;
+				text-align: center;
+				height: 289px;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				border: 4.5px solid #e9bf2b;
+				border-radius: 15px;
+				box-shadow: 2px 3px 6px rgb(0 0 0 / 18%);
+			}
+
+			#quotes {
+				color: #d82271;
+				margin-bottom: 31px;
+				font-family: "Lobster", cursive;
+				font-size: 27px;
+				width: 95%;
+				margin-top: 6px;
+			}
+
+			#author {
+				font-family: "Roboto", sans-serif;
+				color: #d82271;
+				margin-bottom: 31px;
+				margin-left: 460px;
+				font-size: 16px;
+				font-style: italic;
+				font-weight: 00;
+			}
+
+			#getQuote {
+				background-color: white;
+				color: #e42577;
+				font-family: "Ropa Sans", sans-serif;
+				width: 141px;
+				height: 44px;
+				border-radius: 7px;
+				font-size: 16px;
+				font-weight: 600;
+				border: 3px solid #e42577;
+				box-shadow: 2px 3px 6px rgb(0 0 0 / 18%);
+				font-style: italic;
+				/* margin-top: 35px; */
+				/* flex: 0 0 100%; */
+				position: absolute;
+				bottom: 28px;
+			}
+
+			#getQuote:active {
+				background-color: rgb(243, 243, 243);
+				transform: translateY(1px);
+			}
+
+			@media (max-width: 1094px) {
+				#author {
+					margin-left: 394px;
+				}
+
+				.bg {
+					height: 376px;
+				}
+
+				.content {
+					height: 376px;
+				}
+			}
+
+			@media (max-width: 768px) {
+				#author {
+					margin-left: 207px;
+				}
+
+				#quotes {
+					width: 80%;
+				}
+			}
+
+			@media (max-width: 568px) {
+				#author {
+					margin-left: 21px;
+				}
+
+				#quotes {
+					width: 80%;
+				}
+
+				.bg {
+					width: 85%;
+					height: 452px;
+				}
+				.content {
+					height: 452px;
+				}
+			}
+
+			@media (max-width: 315px) {
+				.bg {
+					width: 95%;
+					height: 447px;
+				}
+
+				.content {
+					height: 447px;
+				}
+
+				#author {
+					margin-left: 5px;
+					width: 53%;
+				}
+
+				#quotes {
+					width: 80%;
+				}
+
+				.bg {
+					width: 85%;
+				}
+			}
+
+			@media (max-width: 425px) {
+				.bg {
+					width: 95%;
+					height: 503px;
+				}
+
+				.content {
+					height: 503px;
+				}
+
+				#author {
+					margin-left: 5px;
+					width: 53%;
+				}
+
+				#quotes {
+					width: 80%;
+				}
+
+				#getQuote {
+					margin-top: 6px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bg">
+			<div class="content">
+				<div id="quotes"></div>
+				<div id="author"></div>
+				<button id="getQuote">New Quotes</button>
+			</div>
+		</div>
+
+		<script>
+			const quotes = document.getElementById("quotes");
+			const author = document.getElementById("author");
+			const getQuoteBtn = document.getElementById("getQuote");
+			let realData = "";
+
+			const getNewQuotes = () => {
+				let rnum = Math.floor(Math.random() * 1643);
+
+				quotes.innerText = `${realData[rnum].text}`;
+
+				realData[rnum].author !== null
+					? (author.innerText = `~ By ${realData[rnum].author}`)
+					: (author.innerText = "~ By Uknown");
+			};
+
+			const getQuotes = async () => {
+				const api = "https://type.fit/api/quotes";
+				try {
+					let data = await fetch(api);
+					realData = await data.json();
+					getNewQuotes();
+				} catch (error) {}
+			};
+
+			getQuoteBtn.addEventListener("click", getNewQuotes);
+
+			getQuotes();
+		</script>
+	</body>
+</html>
